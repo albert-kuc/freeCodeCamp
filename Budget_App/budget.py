@@ -2,22 +2,29 @@ class Category:
 
     def __init__(self, category_name):
         self.category_name = category_name
-        self.ledger = []
-        self.balance = 0
-    
+        self._ledger = []
+        self._balance = 0
+
+    @property
+    def ledger(self):
+        return self._ledger
+
     def deposit(self, amount, description=''):
-        self.ledger.append({"amount": amount, "description": description})
-        self.balance += amount
+        self._ledger.append({"amount": amount, "description": description})
+        self.set_balance(amount)
     
     def withdraw(self, amount, description=''):
         if self.check_funds(amount):
-            self.ledger.append({"amount": -amount, "description": description})
-            self.balance -= amount
+            self._ledger.append({"amount": -amount, "description": description})
+            self.set_balance(-amount)
             return True
         return False
 
     def get_balance(self):
-        return self.balance
+        return self._balance
+
+    def set_balance(self, amount):
+        self._balance += amount
     
     def transfer(self, amount, other):
         if self.withdraw(amount, f'Transfer to {other.category_name}'):
@@ -26,18 +33,18 @@ class Category:
         return False
 
     def check_funds(self, amount):
-        if self.balance < amount:
+        if self.get_balance() < amount:
             return False
         return True
     
     def __str__(self):
         summary_str = self.category_name.center(30, '*')
-        for item in self.ledger:
+        for item in self._ledger:
             desc = item['description'].ljust(23)[:23]
             amount = '{0:.2f}'.format(item['amount']).rjust(7)
             
             summary_str += ''.join(('\n', desc, amount))
-        summary_str += f'\nTotal: {self.balance}'
+        summary_str += f'\nTotal: {self.get_balance()}'
         return summary_str
 
 
@@ -56,7 +63,7 @@ def sum_withdrawals(categories_list):
     withdrawals_dict = dict()
     for category in categories_list:
         withdrawals = 0
-        for transaction in category.ledger:
+        for transaction in category._ledger:
             if transaction['amount'] < 0:
                 withdrawals -= transaction['amount']
         withdrawals_dict[category.category_name] = withdrawals
