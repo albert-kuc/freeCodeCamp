@@ -12,13 +12,31 @@ platform.
   
   Video course teaches the basics of programming using Python 3. \
   Created by Dr. Charles Severance (a.k.a. Dr. Chuck). \
-  Also available at [coursera.org](https://www.coursera.org/specializations/python).
+  Official course page [py4e.com](https://www.py4e.com/).
 
   
 * [Arithmetic Formatter](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
   (project)
   
   Create a function that receives a list of strings that are arithmetic problems and returns the problems arranged vertically and side-by-side.
+
+
+* [Time Calculator](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/time-calculator)
+  (project)
+
+  Write a function named "add_time" that can add a duration to a start time and return the result.
+
+
+* [Budget App](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/budget-app)
+  (project)
+
+  Create a "Category" class that can be used to create different budget categories.
+
+
+* [Polygon Area Calculator](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/polygon-area-calculator)
+  (project)
+
+  Use object-oriented programming to create a Rectangle class and a Square class. The Square class should be a subclass of Rectangle and inherit methods and attributes.
 ----------------------------------------------------
 
 ## How to use
@@ -33,4 +51,4 @@ $ pip install -r requirements.txt
 ```
 
 ## Credits
-<img src="https://design-style-guide.freecodecamp.org/downloads/fcc_primary_large.svg" alt="freeCodeCamp.org" width="300"/>
+<img src="https://design-style-guide.freecodecamp.org/downloads/fcc_secondary_large.jpg" width="300"/>
